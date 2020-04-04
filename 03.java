@@ -1,14 +1,11 @@
-public class LC_MaxSubarray {
+class Solution {
     public int maxSubArray(int[] nums) {
-        int tempSum = 0 , previousSum = 0 ; 
-        for ( int i = 0 ; i < nums.length ; i++ ) {
-            tempSum += nums[i] ;
-            if ( tempSum < 0 ) {
-                tempSum = 0 ;
-            } 
-            if ( tempSum > previousSum ) {
-                previousSum = tempSum ;
-            }
+    int max_so_far = nums[0] ;
+    int curr_max = nums[0] ; 
+        for ( int i = 1 ; i < nums.length ; i++ ) {
+            curr_max = Math.max( nums[i] , curr_max + nums[i]) ;
+            max_so_far = Math.max( max_so_far , curr_max );
         }
-        return previousSum ;
+        return max_so_far ;
     }
+}
